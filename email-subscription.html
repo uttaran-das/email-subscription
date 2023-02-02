@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe for newsletters</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="es-style.css">
+</head>
+<body>
+    <div class="content">
+        <p>Subscribe for more details in newsletters</p>
+        <form action="" name="submit-to-google-sheet">
+            <input type="text" name="First Name" id="fName" placeholder="Please enter your First Name" size="25" maxlength="25" required>
+            &nbsp;
+            <input type="text" name="Last Name" id="lName" placeholder="Please enter your Last Name" size="25" maxlength="25" required>
+            &nbsp;
+            <input type="email" name="Email" id="Email" placeholder="Please enter your Email-ID" size="25" maxlength="25" required>
+            &nbsp;
+            <button type="submit"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb-tZNYGjgGUpMgFpe9gQBMBllfpczaS-eFQ&usqp=CAU" alt="Send Button" height="20" width="20"></button>
+        </form>
+        <span id="msg"></span>
+    </div>
+      
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw9djKP95iiJhxmo8JHTZOOwNgPlnYJt-E4TCnBzJWs6rrtO6pBBq4bCNAnOt8hnUm5/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById('msg')
+        
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Thanks for subscribing!"
+                setTimeout(function(){
+                    msg.innerHTML = ""
+                },5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+
+</body>
+</html>

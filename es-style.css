@@ -1,0 +1,31 @@
+*{
+    background-color: rgb(36, 209, 166);
+}
+
+.content{
+    text-align: center;
+    padding: 10%;
+}
+
+.content p{
+    margin: 10px 0px 50px;
+}
+
+form{
+    width: fit-content;
+    margin: auto;
+    display: grid;
+}
+
+form input{
+    background-color: #fff;
+}
+
+form button{
+    background-color: #ff0;
+}
+
+span{
+    color: darkblue;
+    font-size: small;
+}
